@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Birthday Surprise</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!--
+    BIRTHDAY SURPRISE WEBSITE
+    -------------------------
+    Edit this file for the visible birthday text, person's name, and appreciation messages.
+    Images go inside: images/
+    Music goes inside: music/song.mp3
+    Change the birthday person's name in the FINAL FINALE section below.
+    Change the three appreciation descriptions in the APPRECIATION section.
+    Edit the vintage letter date, greeting, body and sign-off in the VINTAGE LETTER section.
+    Search for "REPLACE WITH" to find every editable placeholder.
+  -->
+
+  <audio id="bg-music" loop src="music/song.mp3"></audio>
+
+  <div class="ambient" aria-hidden="true">
+    <span class="orb orb-1"></span><span class="orb orb-2"></span>
+    <span class="orb orb-3"></span>
+    <div class="stars"></div>
+  </div>
+
+  <button class="music-control" id="musicToggle" aria-label="Toggle music">
+    <span id="musicIcon">♫</span><span id="musicLabel">Music off</span>
+  </button>
+
+  <main id="experience">
+    <!-- SLIDE 1 -->
+    <section class="slide active" id="slide-1">
+      <div class="ring ring-a"></div><div class="ring ring-b"></div>
+      <div class="balloon balloon-a">●</div><div class="balloon balloon-b">●</div>
+      <div class="glass hero-card">
+        <p class="eyebrow">A LITTLE SECRET ✦</p>
+        <h1>It's someone's<br><em>special birthday</em> 🎉</h1>
+        <p class="subtitle">Someone deserves a little celebration today...</p>
+        <div class="choice-row">
+          <button class="btn primary" onclick="showSlide('cake')">Yayieee! 🥳</button>
+          <button class="btn ghost" onclick="showSlide('funny')">Naahhh 😐</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- FUNNY REACTION -->
+    <section class="slide" id="slide-funny">
+      <div class="glass reaction-card shake">
+        <div class="reaction-media"><img src="images/angry-pet.gif" alt="Funny angry pet"></div>
+        <p class="eyebrow">EXCUSE ME?</p>
+        <h2>How could you?! 😾</h2>
+        <p>That was absolutely the wrong answer.</p>
+        <button class="btn primary" onclick="showSlide('intro')">Go Back</button>
+      </div>
+    </section>
+
+    <!-- CAKE -->
+    <section class="slide" id="slide-cake">
+      <div class="cake-wrap">
+        <p class="eyebrow">A MOMENT FOR A WISH</p>
+        <h2>Make a wish 🕯️</h2>
+        <p class="instruction">Tap the candle to make a wish.</p>
+
+        <button class="cake" id="candleButton" onclick="blowCandle()" aria-label="Blow out candle">
+          <span class="flame" id="flame"></span>
+          <span class="wick"></span><span class="candle-stick"></span>
+          <span class="cake-top"></span><span class="cake-middle"></span><span class="cake-bottom"></span>
+          <span class="plate"></span>
+        </button>
+      </div>
+    </section>
+
+    <!-- WISH POPUP -->
+    <div class="modal" id="wishModal" aria-hidden="true">
+      <div class="modal-card">
+        <div class="sparkle-icon">✦</div>
+        <h2>🎉 Wish granted! 🎉</h2>
+        <p>Now let's celebrate the person who makes ordinary moments feel a little more special.</p>
+        <button class="btn primary" onclick="closeWishAndContinue()">Continue ✨</button>
+      </div>
+    </div>
+
+    <!-- BIRTHDAY PERSON -->
+    <section class="slide" id="slide-person">
+      <div class="person-layout">
+        <div class="person-copy">
+          <p class="eyebrow">TODAY'S MAIN CHARACTER</p>
+          <h2>Happy Birthday! 🎂</h2>
+          <p class="large-subtitle">Today is all about you.</p>
+          <p class="body-copy">A whole little corner of the internet, made just to celebrate one wonderfully important person.</p>
+          <button class="btn primary" onclick="showSlide('gallery')">Keep going ✨</button>
+        </div>
+        <div class="photo-frame">
+          <div class="photo-decoration">✦</div>
+          <img src="images/birthday-person.jpg" alt="Birthday person">
+          <span class="doodle doodle-1">✿</span><span class="doodle doodle-2">✦</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section class="slide scroll-slide" id="slide-gallery">
+      <div class="section-heading">
+        <p class="eyebrow">LITTLE PIECES OF US</p>
+        <h2>Memory Gallery</h2>
+        <p>Five snapshots. Five tiny reminders of good times.</p>
+      </div>
+      <div class="gallery">
+        <figure class="polaroid p1"><img src="images/us-1.jpg" alt="Memory one"><figcaption>Sharing a frame for the first time!  ✦</figcaption></figure>
+        <figure class="polaroid p2"><img src="images/us-2.jpg" alt="Memory two"><figcaption>The VIPs of the School!</figcaption></figure>
+        <figure class="polaroid p3"><img src="images/us-3.jpg" alt="Memory three"><figcaption>WELL!! After a long break maybe!</figcaption></figure>
+        <figure class="polaroid p4"><img src="images/us-4.jpg" alt="Memory four"><figcaption>Some goodie stuffz together</figcaption></figure>
+        <figure class="polaroid p5"><img src="images/us-5.jpg" alt="Memory five"><figcaption>The Reporters!(Certified Yappers)</figcaption></figure>
+      </div>
+      <button class="btn primary" onclick="showSlide('qualities')">There's more ✨</button>
+    </section>
+
+    <!-- APPRECIATION -->
+    <section class="slide scroll-slide" id="slide-qualities">
+      <div class="section-heading">
+        <p class="eyebrow">WHY YOU'RE SPECIAL</p>
+        <h2>Three little things.</h2>
+        <p>Because some people deserve more than a simple “happy birthday”.</p>
+      </div>
+      <div class="quality-grid">
+        <article class="quality-card violet">
+          <span class="quality-number">01</span><h3>Our Similarities ✨</h3>
+          <!-- REPLACE WITH: Quality 1 description -->
+          <p>The fact thet we share the same birthdate gives a sense of connection. Then the rest is mystery.</p>
+        </article>
+        <article class="quality-card mauve">
+          <span class="quality-number">02</span><h3>Your Caring nature 🌷</h3>
+          <!-- REPLACE WITH: Quality 2 description -->
+          <p>The fact that it made me smile a lot when you made me the Bday cake, or times when you wrote a huge note just to cheer me up before my exam!🫠</p>
+        </article>
+        <article class="quality-card cream">
+          <span class="quality-number">03</span><h3>Your way of calming me down 💫</h3>
+          <!-- REPLACE WITH: Quality 3 description -->
+          <p>Somehow, you know how to calm me down and bring me back to the track..</p>
+        </article>
+      </div>
+      <button class="btn primary" onclick="showSlide('letter')">One last thing…</button>
+    </section>
+
+    <!-- VINTAGE LETTER -->
+    <section class="slide scroll-slide letter-slide" id="slide-letter">
+      <div class="section-heading letter-heading">
+        <p class="eyebrow">A LITTLE NOTE, JUST FOR YOU</p>
+        <h2>A letter from me to you.</h2>
+        <p>Take a moment. Read it slowly.</p>
+      </div>
+
+      <div class="letter-stage">
+        <div class="letter-decoration pen" aria-hidden="true">
+          <span class="pen-body"></span><span class="pen-cap"></span><span class="pen-nib"></span>
+        </div>
+
+        <article class="vintage-letter">
+          <div class="letter-corner corner-tl">❦</div>
+          <div class="letter-corner corner-tr">❦</div>
+          <div class="letter-corner corner-bl">❦</div>
+          <div class="letter-corner corner-br">❦</div>
+
+          <div class="letter-inner">
+            <!-- REPLACE WITH: Letter date -->
+            <p class="letter-date">[26.10.2026]</p>
+
+            <!-- REPLACE WITH: Letter greeting -->
+            <p class="letter-greeting">My dear Dumbo,</p>
+
+            <div class="letter-body">
+              <!-- REPLACE WITH: Letter body -->
+              <p>It's strange, isn't it? How somehow two whole years passed in what feels like the blink of an eye. Somewhere along the way, we learned so much about each other — what we love, what we don't, what makes us laugh, and even what drives us crazy.
+
+                Yeah, we fight. Sometimes over the most ridiculously silly things. But maybe that's what makes us "us". Because despite all the little arguments, the misunderstandings, and the moments when we get on each other's nerves, we somehow always find our way back to each other. And honestly, I think that's what keeps whatever we have between us alive. </p>
+              <!-- REPLACE WITH: Optional second paragraph -->
+              <p>I cherish us together, and i really really hope we dont fade away once again. </p>
+            </div>
+
+            <!-- REPLACE WITH: Letter sign-off -->
+            <p class="letter-signoff">With lots of love,<br><span>Your Mr. Talkative</span></p>
+          </div>
+
+          <div class="wax-seal" aria-hidden="true">❦</div>
+        </article>
+
+        <div class="ink-bottle" aria-hidden="true">
+          <span class="bottle-neck"></span><span class="bottle-body"></span><span class="ink-shine"></span>
+        </div>
+        <span class="letter-flower flower-a" aria-hidden="true">✿</span>
+        <span class="letter-flower flower-b" aria-hidden="true">✦</span>
+      </div>
+
+      <button class="btn primary" onclick="showSlide('finale')">And one last thing… ✨</button>
+    </section>
+
+    <!-- GRAND FINALE -->
+    <section class="slide finale" id="slide-finale">
+      <div class="final-lights"></div>
+      <div class="final-content">
+        <p class="eyebrow">AND FINALLY…</p>
+        <div id="typeMessage" class="type-message"></div>
+        <!-- REPLACE WITH: Birthday person's name -->
+        <h2 id="finalName">Happy Birthday, <span>Arohi(Dumbo)</span>! 🎂💖</h2>
+        <p class="final-small">May this next chapter bring you countless reasons to smile.</p>
+        <button class="btn primary" onclick="replayExperience()">Replay the Surprise ✨</button>
+      </div>
+      <div class="balloon-field" aria-hidden="true">
+        <span>●</span><span>●</span><span>●</span><span>●</span><span>●</span>
+      </div>
+      <div id="confetti" class="confetti-layer" aria-hidden="true"></div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
